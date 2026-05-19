@@ -14,11 +14,18 @@ import {
 import React from "react";
 
 const AddTutor = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const form = Object.fromEntries(formData.entries());
-    console.log(form);
+    const res = await fetch("http://localhost:5000/tutors",{method : "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(form)
+    })
+    const data = await res.json();
+    
   };
 
   return (
