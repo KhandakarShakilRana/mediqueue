@@ -7,10 +7,10 @@ const TutorPage = async () => {
     const data = await res.json();
   return (
     <div>
-        {data.map(d=> <TutorCard key={d._id} data={d}></TutorCard>
+        <TutorCard data={data}></TutorCard>
             
             
-            )}
+           
     </div>
   )
 }
