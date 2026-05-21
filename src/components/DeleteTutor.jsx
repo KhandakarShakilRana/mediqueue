@@ -2,6 +2,7 @@
 
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 
 export function DeleteTutor({data}) {
@@ -12,12 +13,13 @@ export function DeleteTutor({data}) {
               }}
         )
         const result = await res.json();
+        toast("sucessfully deleted")
         redirect("/tutors")
     }
 
   return (
     <AlertDialog>
-      <Button variant="danger">Delete Project</Button>
+      <Button className="w-full" variant="danger">Delete Project</Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">

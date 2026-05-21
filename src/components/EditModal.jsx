@@ -2,10 +2,12 @@
 
 import {Envelope} from "@gravity-ui/icons";
 import {Button, FieldError, Input, Label, Modal, Surface, TextField , Select, ListBox, TextArea} from "@heroui/react";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export function EditModal({data}) {
     const handleSubmit = async (e) => {
-    
+      e.preventDefault();
     const formData = new FormData(e.target);
     const form = Object.fromEntries(formData.entries());
     
@@ -16,11 +18,13 @@ export function EditModal({data}) {
         body: JSON.stringify(form)
     })
     const result = await res.json();
+    toast("sucessfully updated")
+    redirect(`http://localhost:3000/tutors/${data._id}`)
     
   };
   return (
     <Modal>
-      <Button>edit</Button>
+      <Button className="w-full">edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-xl">

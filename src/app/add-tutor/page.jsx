@@ -9,7 +9,7 @@ const AddTutorPage = () => {
   const { data: session } = authClient.useSession();
     const user = session?.user;
   return (
-    <div>
+    <div className='max-w-300 mx-auto'>
       {
         user ? <AddTutor></AddTutor> : <div className='flex justify-center items-center mt-10'>
           <Link href={"/login"}><Button>Login First</Button></Link>

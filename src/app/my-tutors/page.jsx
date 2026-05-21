@@ -1,4 +1,5 @@
 import DeleteBooking from '@/components/DeleteBooking';
+import MyTutorCard from '@/components/MyTutorCard';
 import { auth } from '@/lib/auth';
 import { Button } from '@heroui/react';
 import { headers } from 'next/headers';
@@ -14,24 +15,26 @@ const MyTutorPage = async() => {
     const res = await fetch(`http://localhost:5000/bookings/${user?.id}`)
     const data = await res.json();
 
+    if(data.length === 0){
+      return <div className='flex justify-center mt-10'>
+        <Link href={"/tutors"}><Button className='bg-blue-400 text-center'>please book a tutor</Button></Link>
+      </div>
+    }
     
     
   return (
-    <div>
-      {
-        user ? <div>
-      {
-      data.map(d=> <div key={d._id}>{d.userName}
-      <DeleteBooking data={d}></DeleteBooking>
-      </div>)
-      }
-      </div> : <div className='flex justify-center items-center mt-10'>
-          <Link href={"login"}><Button>Login First</Button></Link>
-        </div>
-      }
-      
+  <div className="max-w-300 mx-auto">
+    {!user ? (
+      <div className="flex justify-center items-center mt-10">
+        <Link href="/login">
+          <Button>Login First</Button>
+        </Link>
       </div>
-  )
+    ) : 
+      <div>{data.map(d=> <MyTutorCard key={d._id} data={d}></MyTutorCard>)}</div>
+    }
+  </div>
+);
 }
 
 export default MyTutorPage

@@ -1,7 +1,7 @@
 "use client";
 import UserProfile from "@/app/profile/page";
 import { authClient } from "@/lib/auth-client";
-import { Avatar, Button } from "@heroui/react";
+import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 // import { useRouter } from "next/router";
@@ -21,22 +21,9 @@ const Navbar = () => {
       ? "bg-blue-500 text-white px-3 py-2 rounded-md"
       : "px-3 py-2";
   return (
-    <div className="flex justify-between items-center p-4">
+    <div className="container mx-auto">
+      <div className="flex justify-between items-center p-4 ">
       <div className="text-2xl font-bold">Medi<span className="text-blue-400">Queue</span></div>
-      <ul className="flex justify-between text-sm gap-4">
-        <Link href={"/"}>
-          <li className={navLink("/")}>Home</li>
-        </Link>
-        <Link href={"/tutors"}>
-          <li className={navLink("/tutors")}>Tutors</li>
-        </Link>
-        <Link href={"/add-tutor"}>
-          <li className={navLink("/add-tutor")}>Add Tutor</li>
-        </Link>
-        <Link href={"/my-tutors"}>
-          <li className={navLink("/my-tutors")}>My Tutors</li>
-        </Link>
-      </ul>
       <div>
         <ul className="flex justify-between items-center gap-3 text-sm">
           {user ? (
@@ -65,6 +52,21 @@ const Navbar = () => {
           )}
         </ul>
       </div>
+    </div>
+    <ul className="sm:w-120 mx-auto flex justify-between text-sm gap-4">
+        <Link href={"/"}>
+          <li className={navLink("/")}>Home</li>
+        </Link>
+        <Link href={"/tutors"}>
+          <li className={navLink("/tutors")}>Tutors</li>
+        </Link>
+        <Link href={"/add-tutor"}>
+          <li className={navLink("/add-tutor")}>Add Tutor</li>
+        </Link>
+        <Link href={"/my-tutors"}>
+          <li className={navLink("/my-tutors")}>My Tutors</li>
+        </Link>
+      </ul>
     </div>
   );
 };

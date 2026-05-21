@@ -1,6 +1,8 @@
 "use client"
 import { Button } from '@heroui/react';
+import { redirect } from 'next/navigation';
 import React from 'react'
+import { toast } from 'react-toastify';
 
 const DeleteBooking = ({data}) => {
     const handleCancle = async()=>{
@@ -10,10 +12,11 @@ const DeleteBooking = ({data}) => {
             }
         });
         const result = await res.json();
+        toast("sucessfully deleted")
+        redirect("/my-tutors")
     }
-    console.log(data);
   return (
-    <div><Button onClick={handleCancle}>delete</Button></div>
+    <div><Button variant='danger' onClick={handleCancle}>delete</Button></div>
   )
 }
 

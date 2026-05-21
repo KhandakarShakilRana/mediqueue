@@ -2,6 +2,7 @@
 import { authClient } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
 import React from 'react'
+import { toast } from 'react-toastify';
 
 const BookingCard = ({data}) => {
     const { data: session } = authClient.useSession();
@@ -19,6 +20,7 @@ const BookingCard = ({data}) => {
         userFee: data.fee,
         userTotalSlot: data.totalSlot,
       }
+      
       const res = await fetch("http://localhost:5000/bookings",{method : "POST",
         headers: {
           "content-type": "application/json",
@@ -26,12 +28,13 @@ const BookingCard = ({data}) => {
         body: JSON.stringify(bookingData)
     })
     const result = await res.json();
-    console.log(result);
+    toast("sucessfully booked")
+    
     
     }
   return (
     <div>
-        <Button onClick={handleBooking}>Booking</Button>
+        <Button className={"w-full bg-green-500 mt-4"} onClick={handleBooking}>Booking</Button>
     </div>
   )
 }

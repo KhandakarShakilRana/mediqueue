@@ -11,7 +11,9 @@ import {
   TimeField,
   Description,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddTutor = () => {
   const handleSubmit = async (e) => {
@@ -25,6 +27,8 @@ const AddTutor = () => {
         body: JSON.stringify(form)
     })
     const data = await res.json();
+    toast("sucessfully added")
+    redirect("/tutors")
     
   };
 
