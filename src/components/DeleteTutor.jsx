@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export function DeleteTutor({data}) {
     const deleteTutor = async (e) => {
         e.preventDefault();
-        const res = await fetch(`http://localhost:5000/tutors/${data._id}`,{method : "DELETE",headers: {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${data._id}`,{method : "DELETE",headers: {
                 "content-type": "application/json",
               }}
         )

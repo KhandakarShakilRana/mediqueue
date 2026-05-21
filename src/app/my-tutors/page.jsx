@@ -12,7 +12,7 @@ const MyTutorPage = async() => {
 })
     const user = session?.user;
     
-    const res = await fetch(`http://localhost:5000/bookings/${user?.id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`)
     const data = await res.json();
 
     if(data.length === 0){

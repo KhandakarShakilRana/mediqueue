@@ -6,7 +6,7 @@ import React from 'react'
 
 const TutorDetailPage = async({params}) => {
     const {id} = await params;
-    const res = await fetch(`http://localhost:5000/tutors/${id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${id}`)
     const data = await res.json();
    
     

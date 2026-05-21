@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const DeleteBooking = ({data}) => {
     const handleCancle = async()=>{
-          const res = await fetch(`http://localhost:5000/bookings/${data?._id}`,{method: "DELETE",
+          const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${data?._id}`,{method: "DELETE",
             headers:{
               "content-type": "application/json",
             }

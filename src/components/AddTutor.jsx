@@ -20,7 +20,7 @@ const AddTutor = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const form = Object.fromEntries(formData.entries());
-    const res = await fetch("http://localhost:5000/tutors",{method : "POST",
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors`,{method : "POST",
         headers: {
           "content-type": "application/json",
         },
