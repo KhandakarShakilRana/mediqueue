@@ -1,3 +1,5 @@
+
+import BookingCard from '@/components/BookingCard';
 import { DeleteTutor } from '@/components/DeleteTutor';
 import { EditModal } from '@/components/EditModal';
 import React from 'react'
@@ -6,6 +8,8 @@ const TutorDetailPage = async({params}) => {
     const {id} = await params;
     const res = await fetch(`http://localhost:5000/tutors/${id}`)
     const data = await res.json();
+   
+    
   return (
     <div>
         
@@ -21,6 +25,8 @@ const TutorDetailPage = async({params}) => {
             <p>{data.institutionExperience}</p>
             <EditModal data={data}></EditModal>
             <DeleteTutor  data={data}/>
+            <BookingCard data={data}></BookingCard>
+            
         
     </div>
   )
