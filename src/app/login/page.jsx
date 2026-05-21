@@ -38,7 +38,7 @@ const LoginPage = () => {
           })
         }
   return (
-    <div className="max-w-7xl mx-auto"> 
+    <div className="max-w-7xl mx-auto mt-10"> 
       <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 pt-5 pr-5 pl-5">
         <TextField
           isRequired

@@ -1,3 +1,4 @@
+import TutorCard from '@/components/TutorCard';
 import Link from 'next/link';
 import React from 'react'
 
@@ -6,13 +7,10 @@ const TutorPage = async () => {
     const data = await res.json();
   return (
     <div>
-        {data.map(d=> <div key={d._id}>{d.tutorName}
-            <p>{d.location}</p>
-            <p>{d.subject}</p>
+        {data.map(d=> <TutorCard key={d._id} data={d}></TutorCard>
             
             
-           <Link href={`/tutors/${d._id}`}> <button className='p-4 bg-yellow-200'>detail</button></Link>
-        </div>)}
+            )}
     </div>
   )
 }
