@@ -8,6 +8,7 @@ import {
   Form,
   Input,
   Label,
+  Separator,
   TextField,
 } from "@heroui/react";
 import { redirect } from "next/navigation";
@@ -31,9 +32,14 @@ const LoginPage = () => {
    }
     
     }
+    const handleGoogle = async()=>{
+          await authClient.signIn.social({
+            provider: "google"
+          })
+        }
   return (
     <div className="max-w-7xl mx-auto"> 
-      <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
+      <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 pt-5 pr-5 pl-5">
         <TextField
           isRequired
           name="email"
@@ -82,6 +88,12 @@ const LoginPage = () => {
           
         </div>
       </Form>
+      
+      <div className="flex justify-center ">or</div>
+      
+      <div className="flex items-center justify-center">
+              <Button onClick={handleGoogle}>Sign In With Google</Button>
+            </div>
     </div>
   );
 };

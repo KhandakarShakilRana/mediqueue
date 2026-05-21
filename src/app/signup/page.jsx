@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
@@ -14,45 +14,38 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const SignUpPage = () => {
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const form = Object.fromEntries(formData.entries());
-    
-    const {data , error} = await authClient.signUp.email({
-        email : form.email,
-        password : form.password,
-        image: form.image,
-        name : form.name
-    })
-   if(data){
-    redirect("/")
-   }
-   if(error){
-    alert(error)
-   } 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const form = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      email: form.email,
+      password: form.password,
+      image: form.image,
+      name: form.name,
+    });
+    if (data) {
+      redirect("/");
     }
-    const handleGoogle = async()=>{
-      await authClient.signIn.social({
-        provider: "google"
-      })
+    if (error) {
+      alert(error);
     }
+  };
+  const handleGoogle = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
-    <div className="max-w-7xl mx-auto"> 
-      <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
-        <TextField
-          isRequired
-          name="name"
-          type="text"
-        >
+    <div className="max-w-7xl mx-auto">
+      <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 pt-5 pr-5 pl-5">
+        <TextField isRequired name="name" type="text">
           <Label>Name</Label>
           <Input placeholder="Enter Your Full Name" />
           <FieldError />
         </TextField>
-        <TextField
-          name="image"
-          type="text"
-        >
+        <TextField name="image" type="text">
           <Label>Image URL</Label>
           <Input placeholder="Paste your image URL here" />
           <FieldError />
@@ -102,10 +95,11 @@ const SignUpPage = () => {
             <Check />
             Create Account
           </Button>
-          
         </div>
       </Form>
-      <div>
+      <div className="flex justify-center ">or</div>
+
+      <div className="flex items-center justify-center">
         <Button onClick={handleGoogle}>Sign In With Google</Button>
       </div>
     </div>
